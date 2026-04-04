@@ -1,0 +1,11 @@
+Student_ID,Name,Gender,Class,Section,Math,Science,English,Attendance
+S001,Aman,Male,10,A,78,82,74,85
+S002,Simran,Female,10,A,88,91,90,92
+S003,Rahul,Male,10,B,56,60,58,70
+S004,Priya,Female,10,B,92,95,94,96
+S005,Arjun,Male,10,A,65,68,70,75
+S006,Neha,Female,10,B,85,87,89,90
+S007,Karan,Male,10,A,45,50,48,60
+S008,Meena,Female,10,B,72,75,78,80
+S009,Rohit,Male,10,A,80,83,79,88
+S010,Anjali,Female,10,B,90,92,91,94
