@@ -50,25 +50,6 @@ print()
 print(df[['Math','Science','English']].mean()) # Subject wise Average
 
 
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-# Distribution
-sns.histplot(df['Average'], kde=True)
-plt.title("Average Marks Distribution")
-plt.show()
-
-# Attendance vs performance
-sns.scatterplot(x='Attendance', y='Average', data=df)
-plt.title("Attendance vs Performance")
-plt.xlabel("Attendance")
-plt.ylabel("Average Marks")
-plt.show()
-
-
-sns.boxplot(x=df['Average']) # It tells your data is skewed or not 
-plt.title("Boxplot of Average Marks")  
-plt.show()  
 
 
 
