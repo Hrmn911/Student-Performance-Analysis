@@ -50,6 +50,12 @@ print()
 print(df[['Math','Science','English']].mean()) # Subject wise Average
 
 
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.histplot(df['Average'], kde=True)
+plt.show()
+
 
 
 
