@@ -78,6 +78,7 @@ elif menu == "Dashboard":
             sns.histplot(df['Average'], kde=True, ax=ax1)
             plt.tight_layout()
             st.pyplot(fig1)
+        
 
         # GRAPH 2
         with col2:

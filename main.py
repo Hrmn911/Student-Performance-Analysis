@@ -54,11 +54,19 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 sns.histplot(df['Average'], kde=True)
+plt.title("Average Marks Distribution")
 plt.show()
 
+df[['Math','Science','English']].mean().plot(kind='bar')
+plt.title("Subject-wise Average")
+plt.show()
 
+sns.scatterplot(x='Attendance', y='Average', data=df)
+plt.title("Attendance vs Performance")
+plt.show()
 
-
+sns.countplot(x='Performance', data=df)
+plt.show()
 
     
 
