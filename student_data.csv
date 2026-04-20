@@ -1,11 +1,6 @@
-Student_ID,Name,Gender,Class,Section,Math,Science,English,Attendance
-S001,Aman,Male,10,A,78,82,74,85
-S002,Simran,Female,10,A,88,91,90,92
-S003,Rahul,Male,10,B,56,60,58,70
-S004,Priya,Female,10,B,92,95,94,96
-S005,Arjun,Male,10,A,65,68,70,75
-S006,Neha,Female,10,B,85,87,89,90
-S007,Karan,Male,10,A,45,50,48,60
-S008,Meena,Female,10,B,72,75,78,80
-S009,Rohit,Male,10,A,80,83,79,88
-S010,Anjali,Female,10,B,90,92,91,94
+Student_ID,Name,Gender,Branch,Year,Section,Math,Science,English,Attendance,Sem1_CGPA,Sem2_CGPA,Backlog_Subject,Backlog_Status,Attempts,Internship,Internship_Domain,Study_Hours,Sleep_Hours,Internet_Usage,Status,Sibling_Domain,Sibling_Performance
+S001,Aman,Male,CSE,2,A,78,82,75,85,7.2,7.8,None,None,0,Yes,Web Dev,3,7,4,Continuing,Engineering,High
+S002,Simran,Female,CSE,2,B,88,91,90,92,8.5,8.9,None,None,0,Yes,Data Science,4,6,3,Continuing,Medical,High
+S003,Rahul,Male,IT,1,A,56,60,58,65,6.0,5.8,Math,Pending,2,No,None,2,6,6,Continuing,Business,Medium
+S004,Priya,Female,CSE,3,B,92,95,94,96,9.1,9.3,None,None,0,Yes,AI/ML,5,7,2,Continuing,Engineering,High
+S005,Arjun,Male,EEE,2,A,65,68,70,72,6.8,7.0,Science,Cleared,1,No,None,3,6,5,Continuing,None,None
