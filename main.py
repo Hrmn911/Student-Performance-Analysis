@@ -68,9 +68,10 @@ plt.show()
 sns.countplot(x='Performance', data=df)
 plt.show()
 
+
     
 
-
+ 
 
 
 
