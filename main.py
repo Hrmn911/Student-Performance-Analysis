@@ -4,7 +4,7 @@ import pandas as pd
 
 df = pd.read_csv("student_data.csv")
 
-print(df.head())
+print(df)
 
 # Data Cleaning
 
@@ -14,73 +14,30 @@ df.drop_duplicates(inplace = True) # for checking the duplicates
 
 df.fillna(0, inplace = True) # for filling the missing values
 
-print()
+# Cleaning the data
 
-# Data Analyize
+df["Backlog_Subject"] = df["Backlog_Subject"].fillna("None")
+df["Backlog_Status"] = df["Backlog_Status"].fillna("No Backlog")
+df["Internship_Domain"] = df["Internship_Domain"].fillna("Unknown")
+df["Sibling_Domain"] = df["Sibling_Domain"].fillna("Unknown")
+df["Sibling_Performance"] = df["Sibling_Performance"].fillna("Uknown")
 
-df["Total"] = df[["Math", "Science", "English"]].sum(axis = 1) # Total
-print(df)
-
-print()
-
-df["Average"] = df["Total"]/ 3 # Average
-print(df)
-
-print()
-# Perfromance
-
-def performace(avg):
-    if avg >= 70:
-        return "High Marks"
-    elif avg>=50:
-        return "Medium Marks"
-    else:
-        return "Low Marks"
-
-df["Performance"] = df["Average"].apply(performace) # Runs a function on every value in column
 print(df)
 print()
+# Data Analysis
 
-print(df.sort_values(by= "Average", ascending = False).head()) # Top Students
-print()
+def performance(df):
+    subjects = ["Math","Science","English"]
 
-print(df[df['Average'] < 50]) # Weak Students
-print()
-
-print(df[['Math','Science','English']].mean()) # Subject wise Average
-
-
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-# Distribution
-sns.histplot(df['Average'], kde=True)
-plt.title("Average Marks Distribution")
-plt.show()
-
-# Attendance vs performance
-sns.scatterplot(x='Attendance', y='Average', data=df)
-plt.title("Attendance vs Performance")
-plt.xlabel("Attendance")
-plt.ylabel("Average Marks")
-plt.show()
-
-
-sns.boxplot(x=df['Average']) # It tells your data is skewed or not 
-plt.title("Boxplot of Average Marks")  
-plt.show()  
-
-
-
-
+    df["Total"] = df[subjects].sum(axis=1)
+    df["Average"] = df[subjects].mean(axis=1)
     
+    return df
 
+df = performance(df)
+print(df.head())
 
-
-
-
-
-
+ 
 
 
 
