@@ -1,15 +1,28 @@
 import pandas as pd
 import streamlit as st
-
-df = pd.read_csv("student_data.csv")
-st.dataframe(df)
-
-
 from src.main import performance
 
 df = pd.read_csv("student_data.csv")
-df = performance(df)
-
-st.title("📊 Student Performance Dashboard")
-
 st.dataframe(df)
+
+st.title("🎓 Student Dashboard")
+
+df, total_students, pass_percentage,avg_marks = performance(df)
+
+st.subheader("📈 Dashboard Overview")
+
+col1, col2, col3= st.columns(3)
+
+with col1:
+    st.metric("Total Students", total_students)
+
+with col2:
+    st.metric("Average Marks", f"{avg_marks:.2f}")
+
+with col3:
+    st.metric("Pass Percentage", f"{pass_percentage:.2f}%")
+
+st.subheader("📊 Data")
+st.dataframe(df)
+
+

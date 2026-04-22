@@ -31,11 +31,20 @@ def performance(df):
 
     df["Total"] = df[subjects].sum(axis=1)
     df["Average"] = df[subjects].mean(axis=1)
+    total_students = len(df)
+    avg_marks = df["Average"].mean()
+    pass_percentage = (df["Average"] >=50).mean() * 100
     
-    return df
+
+    return df, total_students, pass_percentage, avg_marks
 
 df = performance(df)
-print(df.head())
+print(df)
+
+
+
+
+
 
 
 
