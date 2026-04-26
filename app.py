@@ -64,34 +64,70 @@ st.subheader("📊 Visual Insights")
 
 sns.set_style("whitegrid")
 
-col1, col2, col3 = st.columns(3)
 
-# Graph 1
 fig1, ax1 = plt.subplots(figsize=(3,2.5))
+
 sns.histplot(df["Average"], kde=True, ax=ax1)
-ax1.set_title("Distribution")
+
+ax1.set_title("Where Students Score Most")
+ax1.set_xlabel("Average Marks")
+ax1.set_ylabel("Number of Students")
+
+# Highlight average line
+mean_val = df["Average"].mean()
+ax1.axvline(mean_val, linestyle="--")
+ax1.text(mean_val, 1, f"Avg: {mean_val:.1f}", rotation=90)
+
 sns.despine()
+fig2, ax2 = plt.subplots(figsize=(3,2.5))
+
+subject_avg = df[["Math","Science","English"]].mean()
+bars = subject_avg.plot(kind="bar", ax=ax2)
+
+ax2.set_title("Which Subject is Strongest?")
+ax2.set_ylabel("Average Score")
+
+# Add labels on bars
+for i, v in enumerate(subject_avg):
+    ax2.text(i, v + 1, f"{v:.1f}", ha='center')
+
+sns.despine()
+
+fig3, ax3 = plt.subplots(figsize=(3,2.5))
+
+result_counts = df["Result"].value_counts()
+bars = result_counts.plot(kind="bar", ax=ax3)
+
+ax3.set_title("Who Passed and Failed?")
+ax3.set_ylabel("Number of Students")
+
+# Add labels
+for i, v in enumerate(result_counts):
+    ax3.text(i, v + 0.5, str(v), ha='center')
+
+sns.despine()
+
+col1, col2, col3 = st.columns(3)
 
 with col1:
     st.pyplot(fig1)
 
-# Graph 2
-fig2, ax2 = plt.subplots(figsize=(3,2.5))
-df[["Math","Science","English"]].mean().plot(kind="bar", ax=ax2)
-ax2.set_title("Subjects")
-sns.despine()
-
 with col2:
     st.pyplot(fig2)
 
-# Graph 3
-fig3, ax3 = plt.subplots(figsize=(3,2.5))
-df["Result"].value_counts().plot(kind="bar", ax=ax3)
-ax3.set_title("Pass/Fail")
-sns.despine()
-
 with col3:
     st.pyplot(fig3)
+
+st.markdown("### 📌 Quick Insights")
+
+st.info(f"Most students scored around {int(df['Average'].mean())} marks")
+
+best_subject = df[["Math","Science","English"]].mean().idxmax()
+st.success(f"Students perform best in {best_subject}")
+
+fail_count = (df["Result"] == "Fail").sum()
+st.warning(f"{fail_count} students need improvement")
+
 
 # ================= TABLE =================
 st.markdown("---")
