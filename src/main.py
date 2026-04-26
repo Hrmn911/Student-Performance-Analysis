@@ -38,10 +38,14 @@ def performance(df):
 
     pass_percentage = (df["Average"] >=50).mean() * 100
 
-    backlog_count =  (df[subjects]<50).sum(axis=1)
+    topper = df.loc[df["Average"].idxmax()]
+    topper_name = topper["Name"]
+    topper_score = topper["Average"]
 
+    difficult_subject = (df[subjects] < 50).sum().idxmax()
 
-    return df, total_students, pass_percentage, avg_marks, backlog_count
+    return df, total_students, pass_percentage, avg_marks, topper_name, topper_score, difficult_subject
+
 
 df = performance(df)
 print(df)
