@@ -31,6 +31,7 @@ def performance(df):
 
     df["Total"] = df[subjects].sum(axis=1)
     df["Average"] = df[subjects].mean(axis=1)
+    df["Result"] = df["Average"].apply(lambda x: "Pass" if x >= 50 else "Fail")
 
     total_students = len(df)
 
@@ -43,6 +44,8 @@ def performance(df):
     topper_score = topper["Average"]
 
     difficult_subject = (df[subjects] < 50).sum().idxmax()
+
+
 
     return df, total_students, pass_percentage, avg_marks, topper_name, topper_score, difficult_subject
 
