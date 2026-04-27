@@ -8,6 +8,14 @@ from src.main import performance
 # ================= TITLE =================
 st.markdown("<h1 style='text-align: center;'>🎓 Student Performance Dashboard</h1>", unsafe_allow_html=True)
 
+# ================= FILE UPLOAD =================
+uploaded_file = st.file_uploader("📂 Upload Student Data (CSV)", type=["csv"])
+
+# ================= IF FILE NOT UPLOADED =================
+if uploaded_file is None:
+    st.info("Please upload a CSV file to see the analysis.")
+    st.stop()
+
 # ================= LOAD DATA =================
 df = pd.read_csv("student_data.csv")
 
@@ -118,7 +126,7 @@ with col2:
 with col3:
     st.pyplot(fig3)
 
-st.markdown("### 📌 Quick Insights")
+st.markdown("### 📌 Quick Overview")
 
 st.info(f"Most students scored around {int(df['Average'].mean())} marks")
 
